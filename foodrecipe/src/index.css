@@ -1,0 +1,443 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;900&display=swap");
+
+body {
+  font-family: "Rubik", sans-serif;
+}
+
+::selection {
+  background-color: teal;
+  color: #f8eaea;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 15%;
+  background-color: #ef4444;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f7f0f0;
+}
+.nav-links{
+  a{
+      margin-left: 1em;
+      color: var(--text-light);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      position: relative;
+      font-size: .9em;
+      &::before{
+          content: '';
+          display: inline-block;
+          height: 3px;
+          width: 100%;
+          background-color: var(--primary-color);
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          transform: scaleX(0);
+          transition: getAnimationDuration(.2s) ease-in-out;
+      }
+      &:hover{
+          &::before{
+              transform: scaleX(1);
+          }
+      }
+      &.active{
+          color: var(--primary-color);
+          font-weight: bold;
+      }
+  }
+}
+.quantity-desc{
+  border: 1px solid gray;
+padding: 6px;
+}
+.quantity-desc span{
+  font-size: 16px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.quantity-desc .minus{
+  border-right: 1px solid gray;
+  color: #f02d34;
+}
+.quantity-desc .num{
+  border-right: 1px solid gray;
+  font-size: 20px;
+}
+.quantity-desc .plus{
+  color: rgb(49, 168, 49);
+
+}
+.cart-item-qty{
+  position: absolute;
+  right: -8px;
+  top:0.1px;
+  font-size: 12px;
+  color: #eee;
+  background-color: #f02d34;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: 500;
+
+}
+.cart-icon{
+  font-size: 25px;
+  color: gray;
+  cursor: pointer;
+  position: relative;
+  transition: transform .4s ease;
+  border: none;
+  background-color: transparent;
+}
+.cart-icon:hover{
+  transform: scale(1.1,1.1);
+}
+
+.cart-wrapper{
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+  /* will-change: transform; */
+  transition: all 1s ease-in-out;
+
+}
+.cart-container{
+  height: 100vh;
+  width: 600px;
+  background-color: white;
+  float: right;
+  padding: 40px 10px;
+  position: relative;
+  overflow-y: auto;
+}
+.cart-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.cart-container::-webkit-scrollbar-thumb {
+  background-color: lightgrey;
+  border-radius: 6px;
+}
+
+.cart-container::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 6px;
+}
+.cart-heading{
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  gap: 2px;
+  margin-left: 10px;
+  border: none;
+  background-color: transparent;
+}
+
+.cart-heading .heading{
+  margin-left: 10px;
+}
+.cart-num-items{
+  margin-left: 10px;
+  color: #f02d34;
+}
+.empty-cart{
+  margin:40px;
+  text-align:center;
+}
+.empty-cart h3{
+  font-weight: 600;
+  font-size: 20px;
+}
+.btn{
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 12px;
+  border-radius: 15px;
+  border: none;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-top: 40px;
+  text-transform: uppercase;
+  background-color: #f02d34;
+  color: #fff;
+  cursor: pointer;
+    transform: scale(1, 1);
+  transition: transform 0.5s ease;
+}
+.btn:hover{
+  transform: scale(1.1,1.1);
+}
+.product-container{
+  margin-top: 10px;
+}
+.product{
+  padding: 20px 5px;
+
+}
+.product .cart-product-image{
+  width: 25%;
+  height: 25%;
+}
+.item-desc .flex{
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+   color: #324d67;
+
+}
+.item-desc .bottom{
+  margin-top: 60px;
+}
+.item-desc .flex{
+  width: 200px;
+}
+.item-desc .bottom{
+  margin-top: 20px;
+}
+.remove-item{
+  font-size: 24px;
+  color: #f02d34;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+.cart-bottom{
+  position: sticky;
+  bottom: 0;
+  background-color: #fff;
+  padding: 10px;
+  right: 5px;
+width: 100%;
+
+}
+.total{
+  display: flex;
+  justify-content: space-between;
+}
+.total h3{
+  font-size: 20px;
+}
+.btn-container{
+  width: 400px;
+  margin: auto;
+}
+.success-wrapper, .cancel-wrapper{
+  min-height: 60vh;
+
+}
+.success, .cancel{
+  width: 1000px;
+margin: auto;
+margin-top: 160px;
+  background-color: #dcdcdc;
+  padding: 50px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.success .icon {
+   color: green;
+   font-size: 40px;
+}
+.success h2{
+  text-transform: capitalize;
+  margin-top: 15px 0px;
+  font-weight: 900;
+  font-size: 40px;
+  color:#324d67;
+}
+.success .email-msg{
+  font-size: 16px;
+ font-weight: 600;
+ text-align: center;
+}
+.cancel p{
+  font-size: 20px;
+  font-weight: 600;
+}
+.success .description{
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  margin: 10px;
+  margin-top: 30px;
+}
+.success .description .email{
+  margin-left: 5px;
+  color: #f02d34;
+}
+.dropDownProfile{
+  position:absolute;
+  top:1.5 rem;
+  right:1.5 rem;
+  width:140px;
+  padding:12px;
+  border-radius:8px;
+  background-color: white;
+  border:1px solid gray;
+}
+.dropDownProfile::before{
+  content:'';
+  position:absolute;
+  top:-0.7rem;
+  right:1.1rem;
+  width:20px;
+  height:20px;
+  transform:rotate(45deg);
+  background-color: white;
+  border-left:1px solid gray;
+  border-top:1px solid gray;
+}
+
+/* 
+html,
+body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+@layer base {
+  button{
+    @apply border border-black rounded-xl px-5 py-1  
+  }
+}
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+
+
+.custom-btn {
+  @apply flex-row relative justify-center items-center py-2 px-6 outline-none;
+}
+
+/* ul>li {
+  @apply hover: text-green-600
+} */
+
+/*.shadow {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.shadow1 {
+  box-shadow: blue 0px 0px 0px 2px;
+}
+.container{
+  padding-inline: 30vw;
+
+}
+.nav-links{
+  a{
+      margin-left: 1em;
+      color: var(--text-light);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      position: relative;
+      font-size: .9em;
+      &::before{
+          content: '';
+          display: inline-block;
+          height: 3px;
+          width: 100%;
+          background-color: var(--primary-color);
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          transform: scaleX(0);
+          transition: getAnimationDuration(.2s) ease-in-out;
+      }
+      &:hover{
+          &::before{
+              transform: scaleX(1);
+          }
+      }
+      &.active{
+          color: var(--primary-color);
+          font-weight: bold;
+      }
+  }
+}
+
+
+
+.dots-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin-right: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.dot:last-child {
+  margin-right: 0;
+}
+
+.dot:nth-child(1) {
+  animation-delay: -0.3s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: -0.1s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    background-color: #b3d4fc;
+    box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+  }
+
+  50% {
+    transform: scale(1.2);
+    background-color: #4b79e4;
+    box-shadow: 0 0 0 10px rgba(178, 212, 252, 0);
+  }
+
+  100% {
+    transform: scale(0.8);
+    background-color: #2584f8;
+    box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities; */
